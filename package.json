@@ -12,6 +12,7 @@
     "apollo-client": "^2.2.5",
     "apollo-link": "^1.2.1",
     "apollo-link-http": "^1.5.2",
+    "buefy": "^0.6.3",
     "graphql": "^0.13.1",
     "graphql-tag": "^2.8.0",
     "vue": "^2.5.13",
