@@ -17,16 +17,17 @@
                   </b-select>
               </b-field>
 
-              <b-field class="column is-half" label="Nom">
+              <b-field class="column is-one-third" label="Nom">
                   <b-input v-model="survivant.nom"></b-input>
               </b-field>
-
-              <b-field class="column is-half" label="Cout">
+              <b-field class="column is-one-third" label="Image min">
+                  <b-input v-model="survivant.img_min"></b-input>
+              </b-field>
+              <b-field class="column is-one-third" label="Cout">
                   <b-select placeholder="Cout" v-model="survivant.cout">
                       <option v-for="cout in coutOptions" :key="cout" :value="cout"  >{{cout}}</option>
                   </b-select>
               </b-field>
-              
               <FormMembre v-for="(value, key) in survivant.membres" :membre="value" :key="key"/>
           </div>
            <div class="columns box">{{survivant}}</div>
@@ -43,9 +44,11 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
 import FormMembre from "@/components/FormMembre.vue";
-import { CREATE_SURVIVANT_MUTATION } from "../constants/graphql";
+import {
+  CREATE_SURVIVANT_MUTATION,
+  ALL_FACTIONS_QUERY
+} from "../constants/graphql";
 
 export default {
   name: "createSurvivant",
@@ -63,6 +66,11 @@ export default {
       factions: ""
     };
   },
+  apollo: {
+    factions: {
+      query: ALL_FACTIONS_QUERY
+    }
+  },
   methods: {
     addMembre: function() {
       const membre = {
@@ -79,16 +87,6 @@ export default {
         }
       });
     }
-  },
-  apollo: {
-    factions: gql`
-      {
-        factions {
-          id
-          nom
-        }
-      }
-    `
   }
 };
 </script>

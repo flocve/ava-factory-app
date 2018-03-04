@@ -1,11 +1,22 @@
 import gql from 'graphql-tag'
 
+/* -- SURVIVANTS -- */
 export const ALL_SURVIVANTS_QUERY = gql`
   {
     survivants {
       id
-      nom
-      cout
+      nom,
+      cout,
+      img_min,
+      membres{
+        id,
+        type,
+        val_blanc,
+        val_bleue,
+        val_rouge,
+        bullet_blanc,
+        bullet_rouge
+      }
     }
   }
 `
@@ -18,5 +29,15 @@ export const CREATE_SURVIVANT_MUTATION = gql`
         val_blanc
       }
       }
+  }
+`
+
+/* -- FACTIONS -- */
+export const ALL_FACTIONS_QUERY = gql`
+  {
+    factions {
+      id
+      nom
+    }
   }
 `
