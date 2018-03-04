@@ -4,50 +4,39 @@
     <h1>{{ count }}</h1>
     <button class="button is-success" @click="increment">+</button>
     <button class="button is-warning" @click="decrement">-</button>
-    <ul>
-      <li v-for="survivant of survivants" :key="survivant.id">
-        {{survivant.nom}} - {{survivant.cout}}
-      </li>
-    </ul>
-  </div>
+</div>
 </template>
 
 
 <script>
-import gql from 'graphql-tag'
-import store from '../store'
+import gql from "graphql-tag";
+import store from "../store";
 
 export default {
-  data: function(){
+  name: "HelloWorld",
+  data: function() {
     return {
-      survivants: ''
-    }
+      survivants: ""
+    };
   },
   computed: {
-    count () {
-	    return store.state.count
+    count() {
+      return store.state.count;
     }
   },
   methods: {
-    increment () {
-      store.commit('increment')
+    increment() {
+      store.commit("increment");
     },
-    decrement () {
-    	store.commit('decrement')
+    decrement() {
+      store.commit("decrement");
     }
   },
-  name: 'HelloWorld',
+
   props: {
     msg: String
-  },
-
-  apollo: {
-    survivants: gql`{survivants{
-      nom,
-      cout
-    }}`
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
