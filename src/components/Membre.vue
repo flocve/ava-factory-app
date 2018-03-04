@@ -35,8 +35,12 @@ export default {
   },
   computed: {
     imgMembre() {
-      return require("../assets/membres/" +
-        this.typesMembres[this.membre.type].img);
+      let node = "";
+      if (this.membre.type) {
+        node = require("../assets/img/membres/" +
+          this.typesMembres[this.membre.type].img);
+      }
+      return node;
     }
   }
 };

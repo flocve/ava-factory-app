@@ -3,7 +3,7 @@
   <div class="media">
     <figure class="media-left">
       <span class="image is-128x128">
-        <img :src="imgSurvivant"> 
+        <img v-if="survivant.img_min" :src="imgSurvivant"> 
       </span>
     </figure>
     <div class="media-content">
@@ -36,14 +36,14 @@ export default {
   },
   computed: {
     imgSurvivant() {
-      return require("../assets/min/" + this.survivant.img_min);
+      return "img/survivants/min/" + this.survivant.img_min;
     }
   }
 };
 </script>
 
 <style lang="less">
-.bloc_survivant {
+.bloc_survivant.box {
   background-color: darkgray;
 }
 .media-left {
